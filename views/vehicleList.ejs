@@ -1,0 +1,40 @@
+<h2 class="mb-4">Vehicles</h2>
+    <!-- Search Form -->
+    <form action="/search" method="GET" class="mb-4">
+        <div class="input-group">
+            <input type="number" name="id" class="form-control" placeholder="Enter Vehicle ID" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    <table class="table table-striped table-bordered">
+        <thead class="table-primary">
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>KM</th>
+                <th>Color</th>
+                <th>Location</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (vehicles.length === 0) { %>
+                <tr>
+                    <td colspan="6" class="text-center">No vehicles found.</td>
+                </tr>
+            <% } else { %>
+                <% vehicles.forEach(vehicle => { %>
+                    <tr>
+                        <td><%= vehicle.make %></td>
+                        <td><%= vehicle.model %></td>
+                        <td><%= vehicle.km %></td>
+                        <td><%= vehicle.color %></td>
+                        <td><%= vehicle.location %></td>
+                        <td>R<%= vehicle.value %></td>
+                    </tr>
+                <% }) %>
+            <% } %>
+        </tbody>
+    </table>
+
+    <a href="/" class="btn btn-success">Back to Capture Page</a>
